@@ -17,8 +17,12 @@ class ProductsController < ApplicationController
     if @product.save
       redirect_to product_path(@product)
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
+  end
+
+  def edit
+    @product = Product.find()
   end
 
   private
